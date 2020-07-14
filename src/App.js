@@ -10,10 +10,19 @@ const App = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
+        setTodos([
+            ...todos,
+            todo,
+        ])
     }
     
     const handleInputChange = e => {
-        console.log(e.target.value);
+        setTodo({
+            ...todo,
+            id: todos.length + 1,
+            title: e.target.value,
+            done: false
+        })
     }
     
 
@@ -28,7 +37,7 @@ const App = () => {
             <br />
             <hr />
             <br />
-            <form>
+            <form onSubmit={handleFormSubmit}>
                 <input type="text" name="todo"
                  id="title" placeholder="Nova tarefa.."
                  onChange={handleInputChange} />
